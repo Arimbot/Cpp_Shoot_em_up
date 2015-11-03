@@ -1,0 +1,21 @@
+#ifndef _ASTATE_H_
+#define _ASTATE_H_
+
+#include "const.h"
+#include <windows.h>
+#include <string>
+
+enum STATES{ MENU = 0, GAME = 1 };
+
+class AState{
+protected:
+
+	void RenderString(CHAR_INFO _consoleBuffer[SCREEN_WIDTH][SCREEN_HEIGHT], int _x, int _y, const std::string& _string, int _color);
+
+public:
+
+	virtual STATES Events(long int _time) = 0;
+	virtual void Render(long int _time, CHAR_INFO _consoleBuffer[SCREEN_WIDTH][SCREEN_HEIGHT]) = 0;
+};
+
+#endif

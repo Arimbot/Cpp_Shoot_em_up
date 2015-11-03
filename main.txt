@@ -1,0 +1,77 @@
+//
+//int setConsoleScreenBufferInfo(COORD dwSize);
+//
+//int main(int argc, char* argv[]) {
+//	const int SCREEN_WIDTH = 80;
+//	const int SCREEN_HEIGHT = 80;
+//
+//	COORD dwBufferSize = { SCREEN_WIDTH, SCREEN_HEIGHT };
+//
+//	SetConsoleTitle("SHMUP");
+//
+//	if (setConsoleScreenBufferInfo(dwBufferSize)) {
+//		return EXIT_FAILURE;
+//	}
+//
+//	HANDLE hOutput = (HANDLE)GetStdHandle(STD_OUTPUT_HANDLE);
+//
+//	//SetConsoleDisplayMode(hOutput, CONSOLE_FULLSCREEN_MODE, &dwBufferSize);
+//
+//	COORD dwBufferCoord = { 0, 0 };
+//	SMALL_RECT rcRegion = { 0, 0, SCREEN_WIDTH - 1, SCREEN_HEIGHT - 1 };
+//
+//	CHAR_INFO buffer[SCREEN_HEIGHT][SCREEN_WIDTH];
+//
+//	ReadConsoleOutput(hOutput, (CHAR_INFO *)buffer, dwBufferSize,
+//		dwBufferCoord, &rcRegion);
+//
+//	buffer[5][10].Char.AsciiChar = 'H';
+//	buffer[5][10].Attributes = 0x0E;
+//	buffer[5][11].Char.AsciiChar = 'i';
+//	buffer[5][11].Attributes = 0x0B;
+//	buffer[5][12].Char.AsciiChar = '!';
+//	buffer[5][12].Attributes = 0x0A;
+//
+//	buffer[0][0].Char.AsciiChar = 'O';
+//	buffer[0][0].Attributes = 0x0C;
+//
+//	buffer[79][79].Char.AsciiChar = 'O';
+//	buffer[79][79].Attributes = 0x0C;
+//
+//
+//	WriteConsoleOutput(hOutput, (CHAR_INFO *)buffer, dwBufferSize,
+//		dwBufferCoord, &rcRegion);
+//
+//	_getch();
+//
+//	return EXIT_SUCCESS;
+//}
+//
+//int setConsoleScreenBufferInfo(COORD dwSize)
+//{
+//	HANDLE hConsoleOutput = GetStdHandle(STD_OUTPUT_HANDLE);
+//	COORD bakDwSize = dwSize;
+//	SMALL_RECT srctWindow;
+//	CONSOLE_SCREEN_BUFFER_INFO csbiInfo;
+//
+//	// Obtenir les informations de la console
+//	if (!GetConsoleScreenBufferInfo(hConsoleOutput, &csbiInfo)) return EXIT_FAILURE;
+//
+//	// Adapter le buffer de la console en fonction des tailles maximales
+//	dwSize.X = (dwSize.X>csbiInfo.srWindow.Right) ? dwSize.X : csbiInfo.dwSize.X;
+//	dwSize.Y = (dwSize.Y>csbiInfo.srWindow.Bottom) ? dwSize.Y : csbiInfo.dwSize.Y;
+//	if (!SetConsoleScreenBufferSize(hConsoleOutput, dwSize)) return EXIT_FAILURE;
+//
+//	// Modifier la taille de la console
+//	dwSize = bakDwSize;
+//	srctWindow = csbiInfo.srWindow;
+//	srctWindow.Right = dwSize.X - 1;
+//	srctWindow.Bottom = dwSize.Y - 1;
+//	if (!SetConsoleWindowInfo(hConsoleOutput, TRUE, &srctWindow)) return EXIT_FAILURE;
+//
+//	// Adapter la taille du buffer de la console à sa taille (pas d'ascenseurs)
+//	dwSize = bakDwSize;
+//	if (!SetConsoleScreenBufferSize(hConsoleOutput, dwSize)) return EXIT_FAILURE;
+//
+//	return EXIT_SUCCESS;
+//}

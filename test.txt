@@ -1,0 +1,15 @@
+	//TEST
+	consoleBuffer[0][0].Char.AsciiChar = 'O';
+	consoleBuffer[0][0].Attributes = 0x0C;
+	consoleBuffer[79][79].Char.AsciiChar = 'O';
+	consoleBuffer[79][79].Attributes = 0x0C;
+
+	//Test player ship
+	consoleBuffer[50][50].Char.AsciiChar = 'O';
+	consoleBuffer[50][50].Attributes = 0x0C;
+	consoleBuffer[49][50].Char.AsciiChar = '^';
+	consoleBuffer[49][50].Attributes = 0x0C;
+	consoleBuffer[50][51].Char.AsciiChar = '>';
+	consoleBuffer[50][51].Attributes = 0x0C;
+	consoleBuffer[50][49].Char.AsciiChar = '<';
+	consoleBuffer[50][49].Attributes = 0x0C;
