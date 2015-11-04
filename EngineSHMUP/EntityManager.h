@@ -15,13 +15,16 @@ private:
 public:
 	vector<AEnemy*>	enemies;
 	Player	*		player;
-
+	vector<Shot*>	playerShots;
+	vector<Shot*>	enemyShots;
+	
 	static EntityManager* GetInstance();
 	void DeleteInstance();
 
 	void MoveEntities(long int deltaTime);
 	void DrawEntities(CHAR_INFO _consoleBuffer[SCREEN_WIDTH][SCREEN_HEIGHT]);
-	
+	int GetPlayerScore();
+
 	~EntityManager();
 };
 

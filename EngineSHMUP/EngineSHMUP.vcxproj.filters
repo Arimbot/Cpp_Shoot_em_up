@@ -63,10 +63,7 @@
     <ClCompile Include="Player.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Shoot.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="InputManager.cpp">
+    <ClCompile Include="Shot.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -125,10 +122,7 @@
     <ClInclude Include="WavesManager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Shoot.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="InputManager.h">
+    <ClInclude Include="Shot.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

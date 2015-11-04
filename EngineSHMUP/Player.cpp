@@ -2,6 +2,7 @@
 
 Player::Player(){
 	score = 0;
+	timeFromLastShot = 0.0f;
 
 	image[1][0] = '/';
 	image[0][1] = '^';
@@ -12,6 +13,7 @@ Player::Player(){
 	color = 0x0B;
 
 	speed = 0.060f;
+	intervalBetweenShots = 0.003f;
 
 	directionH = UP;
 	directionV = LEFT;
@@ -21,8 +23,26 @@ Player::~Player(){
 
 }
 
+void Player::Draw(CHAR_INFO _consoleBuffer[SCREEN_WIDTH][SCREEN_HEIGHT]){
+	AEntity::Draw(_consoleBuffer);
+	
+	for (auto shot : shots)
+		shot->Draw(_consoleBuffer);
+}
+
 void Player::Move(long int _time){
 	if (alive == true){
+
+		timeFromLastShot += intervalBetweenShots * _time;
+
+		if ((GetAsyncKeyState('A') & 0x8000) && timeFromLastShot > 1.0f){
+			Shot* shot = new Shot();
+			shot->x = x;
+			shot->y = y-1;
+			shots.push_back(shot);
+			timeFromLastShot = 0.0f;
+		}
+
 		////////////horizontalement\\\\\\\\\\\\
 
 		/*
@@ -104,15 +124,8 @@ void Player::Move(long int _time){
 
 			moveValueV = 0.0f;
 		}
+
+		for (auto shot : shots)
+			shot->Move(_time);
 	}
 }
-
-// J'ai ajouté d'ici
-
-void Player::Shoot(){
-	
-
-}
-
-// à ici
-

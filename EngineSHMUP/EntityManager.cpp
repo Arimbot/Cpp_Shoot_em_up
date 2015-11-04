@@ -29,6 +29,10 @@ void EntityManager::MoveEntities(long int deltaTime){
 		it->Move(deltaTime);
 }
 
+int EntityManager::GetPlayerScore(){
+	return player->getScore();
+}
+
 EntityManager* EntityManager::GetInstance() {
 	if (instance == NULL)
 		instance = new EntityManager;

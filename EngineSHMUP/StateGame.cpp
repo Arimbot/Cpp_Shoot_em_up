@@ -23,7 +23,7 @@ STATES StateGame::Events(long int _time) {
 
 		if (swapWalls > 10.0f)
 			swapWalls = 0.0f;
-		
+
 		wavesManager.Events(_time);
 		EntityManager::GetInstance()->MoveEntities(_time);
 	}
@@ -43,7 +43,7 @@ void StateGame::Render(long int _time, CHAR_INFO _consoleBuffer[SCREEN_WIDTH][SC
 	EntityManager::GetInstance()->DrawEntities(_consoleBuffer);
 
 	RenderString(_consoleBuffer, WALLSIZE + 1, 1, "Highscore: ", 0x0B);
-	RenderString(_consoleBuffer, WALLSIZE + 1, 3, "Score: " + std::to_string((int)player.getScore()), 0x0F);
+	RenderString(_consoleBuffer, WALLSIZE + 1, 3, "Score: " + std::to_string(EntityManager::GetInstance()->GetPlayerScore()), 0x0F);
 }
 
 /*

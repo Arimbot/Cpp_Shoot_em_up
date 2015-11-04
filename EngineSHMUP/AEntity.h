@@ -26,7 +26,7 @@ public:
 	int color;
 	char image[ENTITY_SIZE][ENTITY_SIZE];
 	
-	void Draw(CHAR_INFO _consoleBuffer[SCREEN_WIDTH][SCREEN_HEIGHT]);
+	virtual void Draw(CHAR_INFO _consoleBuffer[SCREEN_WIDTH][SCREEN_HEIGHT]);
 	virtual void Move(long int _time) = 0;
 
 	AEntity();
