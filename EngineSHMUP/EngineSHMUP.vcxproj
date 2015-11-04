@@ -107,6 +107,7 @@
   </ItemGroup>
   <ItemGroup>
     <Text Include="vague1.txt" />
+    <None Include="ClassDiagram.cd" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

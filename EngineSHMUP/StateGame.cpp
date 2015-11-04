@@ -9,7 +9,6 @@ swapWallsSpeed(0.05f)
 	moveWalls.start();
 }
 
-
 STATES StateGame::Events(long int _time) {
 	if (GetAsyncKeyState(VK_ESCAPE) & 0x8000 && !(GetAsyncKeyState(VK_RETURN) & 0x8000))
 		pause = true;
@@ -24,7 +23,7 @@ STATES StateGame::Events(long int _time) {
 
 		if (swapWalls > 10.0f)
 			swapWalls = 0.0f;
-
+		
 		wavesManager.Events(_time);
 		EntityManager::GetInstance()->MoveEntities(_time);
 	}
@@ -41,9 +40,10 @@ void StateGame::Render(long int _time, CHAR_INFO _consoleBuffer[SCREEN_WIDTH][SC
 	RenderString(_consoleBuffer, 5, 1, "Highscore: ", 0x0B);
 	RenderString(_consoleBuffer, 5, 3, "Score: ", 0x0F);
 
-	
-	//Provisoire
 	EntityManager::GetInstance()->DrawEntities(_consoleBuffer);
+
+	RenderString(_consoleBuffer, WALLSIZE + 1, 1, "Highscore: ", 0x0B);
+	RenderString(_consoleBuffer, WALLSIZE + 1, 3, "Score: " + std::to_string((int)player.getScore()), 0x0F);
 }
 
 /*
