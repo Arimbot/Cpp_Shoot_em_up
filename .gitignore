@@ -6,3 +6,7 @@
 *.obj
 *.log
 *.user
+*.tlog
+*.lastbuildstate
+*.idb
+EngineSHMUP.sdf
