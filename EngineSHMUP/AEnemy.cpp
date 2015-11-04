@@ -9,3 +9,7 @@ AEnemy::AEnemy()
 AEnemy::~AEnemy()
 {
 }
+
+void AEnemy::Move(){
+
+}
