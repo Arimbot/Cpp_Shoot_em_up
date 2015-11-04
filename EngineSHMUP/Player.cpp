@@ -23,8 +23,11 @@ Player::~Player(){
 
 void Player::Move(long int _time){
 	if (alive == true){
-		////////////horizontaly\\\\\\\\\\\\
+		////////////horizontalement\\\\\\\\\\\\
 
+		/*
+			Observe le maintien de la touche et annule le deplacement en cours si celle-ci change
+		*/
 		if (GetAsyncKeyState(VK_LEFT) & 0x8000){
 			if (directionH != LEFT && moveValueH != 0.0f){
 				directionH = LEFT;
@@ -44,6 +47,9 @@ void Player::Move(long int _time){
 			moveValueH += speed * _time;
 		}
 
+		/*
+			Applique le deplacement en fonction de la touche qui a ete maintenue
+		*/
 		if (moveValueH >= 1.0f){
 			switch (directionH){
 			case LEFT:
@@ -61,7 +67,7 @@ void Player::Move(long int _time){
 			moveValueH = 0.0f;
 		}
 
-		////////////verticaly\\\\\\\\\\\\
+		////////////verticalement\\\\\\\\\\\\
 
 		if (GetAsyncKeyState(VK_UP) & 0x8000){
 			if (directionV != UP && moveValueV != 0.0f){
