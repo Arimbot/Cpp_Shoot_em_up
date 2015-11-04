@@ -6,12 +6,14 @@
 
 #include "WavesManager.h"
 #include "Player.h"
+#include "Classic.h"
 
 class StateGame : public AState{
 private:
 
 	//Provisoire
 	Player player;
+	Classic enn;
 
 	bool pause;
 

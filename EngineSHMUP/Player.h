@@ -5,10 +5,13 @@
 
 class Player : public AEntity{
 private:
+	int score;
 
 public:
 	Player();
 	~Player();
+
+	inline int getScore() { return score; }
 
 	virtual void Move(long int _time);
 };

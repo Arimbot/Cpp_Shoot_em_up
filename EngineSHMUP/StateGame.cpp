@@ -11,6 +11,9 @@ swapWallsSpeed(0.05f)
 	player.x = 40;
 	player.y = 74;
 
+	enn.x = 40;
+	enn.y = 1;
+
 	moveWalls.start();
 }
 
@@ -32,6 +35,7 @@ STATES StateGame::Events(long int _time) {
 
 		//Provisoire
 		player.Move(_time);
+		enn.Move(_time);
 	}
 
 	return GAME;
@@ -43,11 +47,12 @@ void StateGame::Render(long int _time, CHAR_INFO _consoleBuffer[SCREEN_WIDTH][SC
 
 	RenderWalls(_consoleBuffer);
 
-	RenderString(_consoleBuffer, WALLSIZE + 1, 1, "Highscore: ", 0x0B);
-	RenderString(_consoleBuffer, WALLSIZE + 1, 3, "Score: ", 0x0F);
-
 	//Provisoire
 	player.Draw(_consoleBuffer);
+	enn.Draw(_consoleBuffer);
+
+	RenderString(_consoleBuffer, WALLSIZE + 1, 1, "Highscore: ", 0x0B);
+	RenderString(_consoleBuffer, WALLSIZE + 1, 3, "Score: " + std::to_string((int)player.getScore()), 0x0F);
 }
 
 /*

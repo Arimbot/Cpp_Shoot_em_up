@@ -17,6 +17,8 @@ public:
 	DIRECTION directionH;
 	DIRECTION directionV;
 
+	bool alive;
+
 	int x;
 	int y;
 	int moveX;

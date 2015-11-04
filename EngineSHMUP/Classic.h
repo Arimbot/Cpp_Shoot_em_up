@@ -1,5 +1,7 @@
 #pragma once
 #include "AEnemy.h"
+#include <time.h>
+
 class Classic :
 	public AEnemy
 {
