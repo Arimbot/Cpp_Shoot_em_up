@@ -8,6 +8,6 @@
 static class EnemyFactory
 {
 public:
-	static AEnemy CreateEnemy(enemyType_t enemyType);
+	static AEnemy* CreateEnemy(enemyType_t enemyType);
 };
 

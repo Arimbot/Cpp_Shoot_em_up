@@ -6,11 +6,6 @@ pause(false),
 swapWalls(0.0f),
 swapWallsSpeed(0.05f)
 {
-
-	//Provisoire
-	player.x = 40;
-	player.y = 74;
-
 	moveWalls.start();
 }
 
@@ -30,8 +25,8 @@ STATES StateGame::Events(long int _time) {
 		if (swapWalls > 10.0f)
 			swapWalls = 0.0f;
 
-		//Provisoire
-		player.Move(_time);
+		wavesManager.Events(_time);
+		EntityManager::GetInstance()->MoveEntities(_time);
 	}
 
 	return GAME;
@@ -46,8 +41,9 @@ void StateGame::Render(long int _time, CHAR_INFO _consoleBuffer[SCREEN_WIDTH][SC
 	RenderString(_consoleBuffer, 5, 1, "Highscore: ", 0x0B);
 	RenderString(_consoleBuffer, 5, 3, "Score: ", 0x0F);
 
+	
 	//Provisoire
-	player.Draw(_consoleBuffer);
+	EntityManager::GetInstance()->DrawEntities(_consoleBuffer);
 }
 
 /*

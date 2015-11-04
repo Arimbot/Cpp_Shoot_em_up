@@ -11,6 +11,13 @@ public:
 	~Player();
 
 	virtual void Move(long int _time);
+	
+	
+	// J'ai ajouté d'ici
+	
+	void Shoot();
+
+	// à ici
 };
 
 #endif

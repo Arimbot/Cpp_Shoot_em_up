@@ -89,3 +89,13 @@ void Player::Move(long int _time){
 		moveValue = 0.0f;
 	}
 }
+
+// J'ai ajouté d'ici
+
+void Player::Shoot(){
+	
+
+}
+
+// à ici
+
