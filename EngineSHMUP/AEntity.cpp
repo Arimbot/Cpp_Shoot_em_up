@@ -3,7 +3,8 @@
 AEntity::AEntity()
 {
 	speed = 0.0f;
-	moveValue = 0.0f;
+	moveValueH = 0.0f;
+	moveValueV = 0.0f;
 
 	x = 0;
 	y = 0;

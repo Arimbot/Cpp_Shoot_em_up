@@ -11,9 +11,11 @@ class AEntity
 {
 public:
 	float speed;
-	float moveValue;
+	float moveValueH;
+	float moveValueV;
 
-	DIRECTION direction;
+	DIRECTION directionH;
+	DIRECTION directionV;
 
 	int x;
 	int y;

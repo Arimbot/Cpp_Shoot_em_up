@@ -43,8 +43,8 @@ void StateGame::Render(long int _time, CHAR_INFO _consoleBuffer[SCREEN_WIDTH][SC
 
 	RenderWalls(_consoleBuffer);
 
-	RenderString(_consoleBuffer, 5, 1, "Highscore: ", 0x0B);
-	RenderString(_consoleBuffer, 5, 3, "Score: ", 0x0F);
+	RenderString(_consoleBuffer, WALLSIZE + 1, 1, "Highscore: ", 0x0B);
+	RenderString(_consoleBuffer, WALLSIZE + 1, 3, "Score: ", 0x0F);
 
 	//Provisoire
 	player.Draw(_consoleBuffer);
