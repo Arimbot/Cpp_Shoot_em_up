@@ -32,10 +32,8 @@ void StateMenu::Render(long int _time, CHAR_INFO _consoleBuffer[SCREEN_WIDTH][SC
 	Dessin du cadre entourant la console dans le menu
 */
 void StateMenu::RenderFrame(CHAR_INFO _consoleBuffer[SCREEN_WIDTH][SCREEN_HEIGHT]) {
-	const char nbRow = 4;
-
 	for (int i = 0; i < SCREEN_HEIGHT; i++){
-		for (int j = 0; j < nbRow; j++){
+		for (int j = 0; j < WALLSIZE; j++){
 			_consoleBuffer[i][j].Char.AsciiChar = '|';
 			_consoleBuffer[i][j].Attributes = 0x0A;
 
@@ -44,8 +42,8 @@ void StateMenu::RenderFrame(CHAR_INFO _consoleBuffer[SCREEN_WIDTH][SCREEN_HEIGHT
 		}
 	}
 
-	for (int i = nbRow; i < SCREEN_WIDTH - nbRow; i++){
-		for (int j = 0; j < nbRow; j++){
+	for (int i = WALLSIZE; i < SCREEN_WIDTH - WALLSIZE; i++){
+		for (int j = 0; j < WALLSIZE; j++){
 			_consoleBuffer[j][i].Char.AsciiChar = '=';
 			_consoleBuffer[j][i].Attributes = 0x0A;
 

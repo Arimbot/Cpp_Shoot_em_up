@@ -4,4 +4,6 @@
 #define SCREEN_WIDTH	80
 #define SCREEN_HEIGHT	80
 
+#define WALLSIZE		4
+
 #endif

@@ -10,7 +10,7 @@ public:
 	Player();
 	~Player();
 
-	virtual void Move();
+	virtual void Move(long int _time);
 };
 
 #endif

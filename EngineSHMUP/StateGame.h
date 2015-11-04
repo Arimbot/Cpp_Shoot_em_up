@@ -5,9 +5,13 @@
 #include "NYTimer.h"
 
 #include "WavesManager.h"
+#include "Player.h"
 
 class StateGame : public AState{
 private:
+
+	//Provisoire
+	Player player;
 
 	bool pause;
 

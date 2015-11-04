@@ -10,6 +10,6 @@ AEnemy::~AEnemy()
 {
 }
 
-void AEnemy::Move(){
+void AEnemy::Move(long int _time){
 
 }
