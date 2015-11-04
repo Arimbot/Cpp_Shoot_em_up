@@ -32,9 +32,6 @@ STATES StateGame::Events(long int _time) {
 }
 
 void StateGame::Render(long int _time, CHAR_INFO _consoleBuffer[SCREEN_WIDTH][SCREEN_HEIGHT]) {
-	if (pause == true)
-		RenderString(_consoleBuffer, 38, 35, "PAUSE", 0x0C);
-
 	RenderWalls(_consoleBuffer);
 
 	RenderString(_consoleBuffer, 5, 1, "Highscore: ", 0x0B);
@@ -44,6 +41,9 @@ void StateGame::Render(long int _time, CHAR_INFO _consoleBuffer[SCREEN_WIDTH][SC
 
 	RenderString(_consoleBuffer, WALLSIZE + 1, 1, "Highscore: ", 0x0B);
 	RenderString(_consoleBuffer, WALLSIZE + 1, 3, "Score: " + std::to_string((int)player.getScore()), 0x0F);
+
+	if (pause == true)
+		RenderString(_consoleBuffer, 38, 35, "PAUSE", 0x0C);
 }
 
 /*

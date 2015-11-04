@@ -40,10 +40,14 @@ void Classic::Move(long int _time){
 				y += 1;
 
 				if (rand() % 4 == 0){
-					if (rand() % 2 == 0)
-						x += 1;
-					else
-						x -= 1;
+					if (rand() % 2 == 0){
+						if (x + 3 < SCREEN_WIDTH - WALLSIZE)
+							x += 1;
+					}
+					else{
+						if (x - 1 > WALLSIZE)
+							x -= 1;
+					}
 				}
 			}
 
