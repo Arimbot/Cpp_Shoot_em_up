@@ -9,7 +9,7 @@ Classic::Classic()
 	image[1][0] = '\\';
 	image[0][1] = '-';
 	image[1][2] = '//';
-	image[1][1] = '_';
+	image[1][1] = 'O';
 	image[0][2] = '\\';
 
 	color = 0x0C;
