@@ -3,18 +3,18 @@
 /*
 	Factory to create the enemies
 */
-AEnemy EnemyFactory::CreateEnemy(enemyType_t enemyType) {
-	AEnemy enemy;
+AEnemy* EnemyFactory::CreateEnemy(enemyType_t enemyType) {
+	AEnemy* enemy = NULL;
 	
 	switch ( enemyType ) {
 	case CLASSIC:
-		enemy = Classic();
+		enemy = new Classic();
 		break;
 	case CLASSIC_SHOOTER:
-		enemy = ClassicShooter();
+		enemy = new ClassicShooter();
 		break;
 	case BOSS:
-		enemy = Boss();
+		enemy = new Boss();
 		break;
 	}
 

@@ -73,8 +73,10 @@
     <ClCompile Include="EnemyFactory.cpp" />
     <ClCompile Include="Engine.cpp" />
     <ClCompile Include="EntityManager.cpp" />
+    <ClCompile Include="InputManager.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Player.cpp" />
+    <ClCompile Include="Shoot.cpp" />
     <ClCompile Include="StateGame.cpp" />
     <ClCompile Include="StateMenu.cpp" />
     <ClCompile Include="Wave.cpp" />
@@ -93,13 +95,18 @@
     <ClInclude Include="enemyType_t.h" />
     <ClInclude Include="Engine.h" />
     <ClInclude Include="EntityManager.h" />
+    <ClInclude Include="InputManager.h" />
     <ClInclude Include="NYTimer.h" />
     <ClInclude Include="Player.h" />
+    <ClInclude Include="Shoot.h" />
     <ClInclude Include="StateGame.h" />
     <ClInclude Include="StateMenu.h" />
     <ClInclude Include="Wave.h" />
     <ClInclude Include="WaveEntry.h" />
     <ClInclude Include="WavesManager.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="vague1.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
