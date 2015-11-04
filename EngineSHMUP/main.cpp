@@ -12,7 +12,7 @@ int main(int argc, char* argv[]) {
 
 	while ( engine->IsRunning() ){
 		currentTime = loopTimer.getElapsedMs();
-		deltaTime = lastTime - currentTime;
+		deltaTime = currentTime - lastTime;
 		lastTime = currentTime;
 
 		engine->Events(deltaTime);

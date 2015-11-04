@@ -11,6 +11,9 @@ running(true)
 	InitializeStates();
 }
 
+/*
+	Initialise les membres lies a la console
+*/
 int Engine::InitializeView(){
 	dwBufferSize.X = SCREEN_WIDTH;
 	dwBufferSize.Y = SCREEN_HEIGHT;
@@ -26,6 +29,10 @@ int Engine::InitializeView(){
 
 	return SetConsoleScreenBufferInfo(dwBufferSize);
 }
+
+/*
+	Defini la taille de la console
+*/
 
 int Engine::SetConsoleScreenBufferInfo(COORD dwSize)
 {
@@ -60,6 +67,10 @@ int Engine::SetConsoleScreenBufferInfo(COORD dwSize)
 	return EXIT_SUCCESS;
 }
 
+/*
+	Cree les etats du moteur, le menu et le jeu
+	A initialiser dans l'ordre defini dans l'enum STATES
+*/
 void Engine::InitializeStates() {
 	StateMenu* menu = new StateMenu;
 	states.push_back(menu);
@@ -95,7 +106,9 @@ void Engine::DeleteInstance() {
 }
 
 
-
+/*
+	Fait un flush de la zone de rendu de la console
+*/
 void Engine::ClearBuffer(){
 	for (int i = 0; i < SCREEN_WIDTH; i++){
 		for (int j = 0; j < SCREEN_HEIGHT; j++){
@@ -105,16 +118,27 @@ void Engine::ClearBuffer(){
 	}
 }
 
+/*
+	Rendu du moteur appelant le rendu specifique du mode selectionne
+*/
 void Engine::Render(long int _time) {
 	ClearBuffer();
 
 	//Call the selected state Render():
-	states[currentState]->Render(_time, consoleBuffer);
+	if (currentState != CLOSE)
+		states[currentState]->Render(_time, consoleBuffer);
 
 	WriteConsoleOutput(hOutput, (CHAR_INFO *)consoleBuffer, dwBufferSize, dwBufferCoord, &rcRegion);
 }
 
+/*
+	Evenements du moteur appelant les controles du mode selectionne
+*/
 void Engine::Events(long int _time) {
 	//Call the selected state Events() and set the next state
-	currentState = states[currentState]->Events(_time);
+	if (currentState != CLOSE)
+		currentState = states[currentState]->Events(_time);
+
+	if (currentState == CLOSE)
+		running = false;
 }

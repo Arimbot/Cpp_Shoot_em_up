@@ -1,5 +1,8 @@
 #include "AState.h"
 
+/*
+	Decoupe une std::string pour en faire une chaine affichable sur la console
+*/
 void AState::RenderString(CHAR_INFO _consoleBuffer[SCREEN_WIDTH][SCREEN_HEIGHT], int _x, int _y, const std::string& _string, int _color) {
 	for (int i = 0; i < (int)_string.size(); i++) {
 		if (_x >= 0 && _x + i < SCREEN_WIDTH) {

@@ -8,6 +8,8 @@ StateMenu::StateMenu() {
 STATES StateMenu::Events(long int _time) {
 	if (GetAsyncKeyState('1') & 0x8000)
 		return GAME;
+	else if (GetAsyncKeyState('Q') & 0x8000)
+		return CLOSE;
 
 	return MENU;
 }
@@ -26,15 +28,18 @@ void StateMenu::Render(long int _time, CHAR_INFO _consoleBuffer[SCREEN_WIDTH][SC
 	//frames++;
 }
 
+/*
+	Dessin du cadre entourant la console dans le menu
+*/
 void StateMenu::RenderFrame(CHAR_INFO _consoleBuffer[SCREEN_WIDTH][SCREEN_HEIGHT]) {
 	const char nbRow = 4;
 
 	for (int i = 0; i < SCREEN_HEIGHT; i++){
 		for (int j = 0; j < nbRow; j++){
-			_consoleBuffer[i][j].Char.AsciiChar = 'O';
+			_consoleBuffer[i][j].Char.AsciiChar = '|';
 			_consoleBuffer[i][j].Attributes = 0x0A;
 
-			_consoleBuffer[i][SCREEN_WIDTH - 1 - j].Char.AsciiChar = 'O';
+			_consoleBuffer[i][SCREEN_WIDTH - 1 - j].Char.AsciiChar = '|';
 			_consoleBuffer[i][SCREEN_WIDTH - 1 - j].Attributes = 0x0A;
 		}
 	}

@@ -5,7 +5,7 @@
 #include <windows.h>
 #include <string>
 
-enum STATES{ MENU = 0, GAME = 1 };
+enum STATES{ MENU = 0, GAME = 1, CLOSE = 2 };
 
 class AState{
 protected:

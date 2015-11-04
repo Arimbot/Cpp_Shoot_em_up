@@ -12,7 +12,8 @@ private:
 	bool pause;
 
 	NYTimer moveWalls;
-	bool swapWalls;
+	float swapWalls;
+	float swapWallsSpeed;
 
 	void RenderWalls(CHAR_INFO _consoleBuffer[SCREEN_WIDTH][SCREEN_HEIGHT]);
 
