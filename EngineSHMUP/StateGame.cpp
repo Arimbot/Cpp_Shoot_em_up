@@ -9,7 +9,6 @@ swapWallsSpeed(0.05f)
 	moveWalls.start();
 }
 
-
 STATES StateGame::Events(long int _time) {
 	if (GetAsyncKeyState(VK_ESCAPE) & 0x8000 && !(GetAsyncKeyState(VK_RETURN) & 0x8000))
 		pause = true;
@@ -24,19 +23,27 @@ STATES StateGame::Events(long int _time) {
 
 		if (swapWalls > 10.0f)
 			swapWalls = 0.0f;
+
+		wavesManager.Events(_time);
+		EntityManager::GetInstance()->MoveEntities(_time);
 	}
 
 	return GAME;
 }
 
 void StateGame::Render(long int _time, CHAR_INFO _consoleBuffer[SCREEN_WIDTH][SCREEN_HEIGHT]) {
-	if (pause == true)
-		RenderString(_consoleBuffer, 38, 35, "PAUSE", 0x0C);
-
 	RenderWalls(_consoleBuffer);
 
 	RenderString(_consoleBuffer, 5, 1, "Highscore: ", 0x0B);
 	RenderString(_consoleBuffer, 5, 3, "Score: ", 0x0F);
+
+	EntityManager::GetInstance()->DrawEntities(_consoleBuffer);
+
+	RenderString(_consoleBuffer, WALLSIZE + 1, 1, "Highscore: ", 0x0B);
+	RenderString(_consoleBuffer, WALLSIZE + 1, 3, "Score: " + std::to_string(EntityManager::GetInstance()->GetPlayerScore()), 0x0F);
+
+	if (pause == true)
+		RenderString(_consoleBuffer, 38, 35, "PAUSE", 0x0C);
 }
 
 /*
@@ -44,10 +51,8 @@ void StateGame::Render(long int _time, CHAR_INFO _consoleBuffer[SCREEN_WIDTH][SC
 	a certains moments pour faire une sorte d'animation
 */
 void StateGame::RenderWalls(CHAR_INFO _consoleBuffer[SCREEN_WIDTH][SCREEN_HEIGHT]) {
-	const char nbRow = 4;
-
 	for (int i = 0; i < SCREEN_HEIGHT; i++){
-		for (int j = 0; j < nbRow; j++){
+		for (int j = 0; j < WALLSIZE; j++){
 			char character = '\'';
 
 			if (swapWalls >= 0.0f && swapWalls < 5.0f)

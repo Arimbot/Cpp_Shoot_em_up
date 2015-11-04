@@ -1,15 +1,13 @@
 #pragma once
 #include "AEntity.h"
 
-class AEnemy :
+class Shot :
 	public AEntity
 {
 public:
-	int scoreValue;
+	Shot();
+	~Shot();
 
 	virtual void Move(long int _time);
-
-	AEnemy();
-	~AEnemy();
 };
 

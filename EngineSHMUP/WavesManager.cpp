@@ -68,11 +68,13 @@ void WavesManager::AddEnemyToScene() {
 	WaveEntry entry = currentWave->waveEntries.front();
 	currentWave->waveEntries.pop();
 
-	AEnemy enemy = EnemyFactory::CreateEnemy(entry.enemyType);
-	enemy.x = entry.positionX;
-	enemy.y = entry.positionY;
+	AEnemy* enemy = EnemyFactory::CreateEnemy(entry.enemyType);
+	enemy->x = entry.positionX;
+	enemy->y = entry.positionY;
 	timeNeededToNextEnemy = entry.timeToNextEnemy;
 	timeFromLastEnemy = 0;
+
+	EntityManager::GetInstance()->enemies.push_back(enemy);
 }
 
 void WavesManager::UpdateEnemyInterval(long int deltaTime) {

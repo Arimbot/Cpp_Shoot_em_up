@@ -7,6 +7,7 @@
 #include "AEntity.h"
 #include "Wave.h"
 #include "EnemyFactory.h"
+#include "EntityManager.h"
 
 using namespace std;
 
