@@ -108,7 +108,7 @@
     <ClInclude Include="WavesManager.h" />
   </ItemGroup>
   <ItemGroup>
-    <Text Include="vague1.txt" />
+    <Text Include="data" />
   </ItemGroup>
   <ItemGroup>
     <None Include="ClassDiagram.cd" />
