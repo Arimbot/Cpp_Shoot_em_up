@@ -139,9 +139,9 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <None Include="ClassDiagram.cd" />
+    <Text Include="vague1.txt" />
   </ItemGroup>
   <ItemGroup>
-    <Text Include="data" />
+    <None Include="ClassDiagram.cd" />
   </ItemGroup>
 </Project>
