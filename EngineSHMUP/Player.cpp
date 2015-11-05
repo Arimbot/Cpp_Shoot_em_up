@@ -13,7 +13,7 @@ Player::Player(){
 
 	color = 0x0B;
 
-	speed = 0.060f;
+	speed = 0.055f;
 
 	directionH = UP;
 	directionV = LEFT;

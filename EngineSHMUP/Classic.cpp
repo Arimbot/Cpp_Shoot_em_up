@@ -20,6 +20,10 @@ Classic::Classic()
 	directionV = LEFT;
 
 	scoreValue = 100;
+
+	maxValue = 1.0f;
+	leftRight = false;
+	moveX = 1;
 }
 
 
@@ -33,13 +37,16 @@ void Classic::Update(long int time){
 	if (isAlive == true){
 		moveValueH += speed * time;
 
-		if (moveValueH >= 1.0f){
-			if (y + 1 >= SCREEN_HEIGHT)
+		if (moveValueH >= maxValue){
+			if (y + 1 >= SCREEN_HEIGHT){
 				y = 0;
-			else{
-				y += 1;
+				if (maxValue == 0.6f)
+					leftRight = true;
 
-				if (rand() % 4 == 0){
+				maxValue = 0.6f;
+			}
+			else if (leftRight == false){
+				if (rand() % 2 == 0){
 					if (rand() % 2 == 0){
 						if (x + 3 < SCREEN_WIDTH - WALLSIZE)
 							x += 1;
@@ -50,6 +57,16 @@ void Classic::Update(long int time){
 					}
 				}
 			}
+			else{
+				if (x + 3 >= SCREEN_WIDTH - WALLSIZE)
+					moveX = -1;
+				else if (x <= WALLSIZE)
+					moveX = 1;
+
+				x += moveX;
+			}
+
+			y += 1;
 
 			moveValueH = 0.0f;
 		}
