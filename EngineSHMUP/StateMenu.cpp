@@ -1,7 +1,15 @@
 #include "StateMenu.h"
 
 StateMenu::StateMenu() {
+	FILE* hs = NULL;
 
+	fopen_s(&hs, "hs.txt", "r");
+	
+	if (hs != NULL){
+		fscanf_s(hs, "%d", &highscore);
+	}
+
+	fclose(hs);
 }
 
 
@@ -21,7 +29,7 @@ void StateMenu::Render(long int time, CHAR_INFO _consoleBuffer[SCREEN_WIDTH][SCR
 	RenderString(_consoleBuffer, 15, 57, "1. JOUER", 0x0E);
 	RenderString(_consoleBuffer, 15, 60, "Q. QUITTER", 0x0E);
 
-	RenderString(_consoleBuffer, 5, 5, "Highscore: ", 0x0B);
+	RenderString(_consoleBuffer, 5, 5, "Highscore: " + std::to_string((int) highscore), 0x0B);
 
 	RenderString(_consoleBuffer, 64, 74, "CREDITS: _", 0x0B);
 
