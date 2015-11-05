@@ -14,7 +14,7 @@ using namespace std;
 class WavesManager
 {
 public:	
-	void Events(long int deltaTime);
+	void Update(long int deltaTime);
 	WavesManager();
 	~WavesManager();
 private:

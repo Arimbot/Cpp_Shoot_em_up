@@ -27,7 +27,7 @@ private:
 public:
 	StateGame();
 
-	virtual STATES Events(long int time);
+	virtual STATES Update(long int time);
 	virtual void Render(long int time, CHAR_INFO _consoleBuffer[SCREEN_WIDTH][SCREEN_HEIGHT]);
 };
 

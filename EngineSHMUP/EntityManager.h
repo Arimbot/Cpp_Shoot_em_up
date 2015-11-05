@@ -22,7 +22,7 @@ public:
 	static EntityManager* GetInstance();
 	void DeleteInstance();
 
-	void MoveEntities(long int deltaTime);
+	void Update(long int deltaTime);
 	void DrawEntities(CHAR_INFO _consoleBuffer[SCREEN_WIDTH][SCREEN_HEIGHT]);
 	int GetPlayerScore();
 

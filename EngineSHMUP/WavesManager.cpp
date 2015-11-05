@@ -44,7 +44,7 @@ WaveEntry WavesManager::ReadEntry ( string line ) {
 	return entry;
 }
 
-void WavesManager::Events ( long int deltaTime ) {	
+void WavesManager::Update(long int deltaTime) {
 	if ( currentWave == NULL ) {
 		currentWave = ReadWave("vague1.txt");
 		timeFromLastEnemy = 0;
