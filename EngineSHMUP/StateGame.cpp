@@ -6,6 +6,16 @@ pause(false),
 swapWalls(0.0f),
 swapWallsSpeed(0.05f)
 {
+	FILE* hs = NULL;
+
+	fopen_s(&hs, "hs.txt", "r");
+
+	if (hs != NULL){
+		fscanf_s(hs, "%d", &highscore);
+	}
+
+	fclose(hs);
+
 	moveWalls.start();
 }
 
@@ -34,7 +44,7 @@ STATES StateGame::Events(long int time) {
 void StateGame::Render(long int time, CHAR_INFO _consoleBuffer[SCREEN_WIDTH][SCREEN_HEIGHT]) {
 	RenderWalls(_consoleBuffer);
 
-	RenderString(_consoleBuffer, 5, 1, "Highscore: ", 0x0B);
+	RenderString(_consoleBuffer, 5, 1, "Highscore: " + std::to_string((int)highscore), 0x0B);
 	RenderString(_consoleBuffer, 5, 3, "Score: ", 0x0F);
 
 	EntityManager::GetInstance()->DrawEntities(_consoleBuffer);

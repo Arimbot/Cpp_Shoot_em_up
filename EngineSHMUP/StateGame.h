@@ -12,9 +12,7 @@
 class StateGame : public AState{
 private:
 
-	//Provisoire
-	Player player;
-	Classic enn;
+	int highscore;
 
 	WavesManager wavesManager;
 
