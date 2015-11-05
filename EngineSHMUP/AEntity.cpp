@@ -6,7 +6,7 @@ AEntity::AEntity()
 	moveValueH = 0.0f;
 	moveValueV = 0.0f;
 
-	alive = true;
+	isAlive = true;
 
 	x = 0;
 	y = 0;
@@ -25,7 +25,7 @@ AEntity::~AEntity()
 }
 
 void AEntity::Draw(CHAR_INFO _consoleBuffer[SCREEN_WIDTH][SCREEN_HEIGHT]){
-	if (alive == true){
+	if (isAlive == true){
 		for (int i = 0; i < ENTITY_SIZE; i++){
 			for (int j = 0; j < ENTITY_SIZE; j++){
 				if (x + i >= 0 && x + i < SCREEN_WIDTH && y + j >= 0 && y + j < SCREEN_HEIGHT){

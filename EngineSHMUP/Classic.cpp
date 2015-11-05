@@ -30,12 +30,12 @@ Classic::~Classic()
 
 
 void Classic::Update(long int time){
-	if (alive == true){
+	if (isAlive == true){
 		moveValueH += speed * time;
 
 		if (moveValueH >= 1.0f){
 			if (y + 1 >= SCREEN_HEIGHT)
-				alive = false;
+				isAlive = false;
 			else{
 				y += 1;
 

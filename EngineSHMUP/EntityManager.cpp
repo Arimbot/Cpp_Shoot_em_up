@@ -28,17 +28,22 @@ void EntityManager::MoveEntities(long int deltaTime){
 	for (std::vector<AEnemy*>::iterator it = enemies.begin(); it != enemies.end();){
 		AEnemy* enemy = (*it);
 
+		if (enemy->isAlive && player->isAlive && CollisionHandler::EntityCollidesEntity((*player), (*enemy))){
+			enemy->isAlive = false;
+			player->isAlive = false;
+		}
+
 		for (auto shot : player->getShots()){
-			if (shot->alive == true && enemy->alive == true && CollisionHandler::ShotCollidesEntity((*shot), (*enemy))){
-				enemy->alive = false;
-				shot->alive = false;
+			if (shot->isAlive && enemy->isAlive && CollisionHandler::ShotCollidesEntity((*shot), (*enemy))){
+				enemy->isAlive = false;
+				shot->isAlive = false;
 				player->addScore(enemy->scoreValue);
 			}
 		}
 		
-		(*it)->Update(deltaTime);
+		enemy->Update(deltaTime);
 
-		if (!enemy->alive)
+		if (!enemy->isAlive)
 			it = enemies.erase(it);
 		else
 			it++;

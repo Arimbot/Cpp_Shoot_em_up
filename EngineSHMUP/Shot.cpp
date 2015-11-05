@@ -17,12 +17,12 @@ Shot::~Shot(){
 }
 
 void Shot::Update(long int time){
-	if (alive == true){
+	if (isAlive == true){
 		moveValueH += speed * time;
 
 		if (moveValueH >= 1.0f){
 			if (y - 1 <= 0)
-				alive = false;
+				isAlive = false;
 			else
 				y -= 1;
 

@@ -115,7 +115,7 @@ void Player::Move(long int time){
 }
 
 void Player::Update(long int time){
-	if ( alive == true ) {
+	if (isAlive == true) {
 		Move(time);
 		Shoot(time);
 	}
@@ -148,7 +148,7 @@ void Player::ManageShots( long int time ){
 	for (std::vector<Shot*>::iterator it = shots.begin(); it != shots.end();){
 		(*it)->Update(time);
 		
-		if (!(*it)->alive)
+		if (!(*it)->isAlive)
 			it = shots.erase(it);
 		else
 			it++;

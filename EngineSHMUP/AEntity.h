@@ -17,7 +17,7 @@ public:
 	DIRECTION directionH;
 	DIRECTION directionV;
 
-	bool alive;
+	bool isAlive;
 
 	int x;
 	int y;
