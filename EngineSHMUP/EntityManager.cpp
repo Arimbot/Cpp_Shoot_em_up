@@ -25,8 +25,25 @@ void EntityManager::MoveEntities(long int deltaTime){
 	player->Update(deltaTime);
 
 	// ajouter code pour deleter enemies morts ou qui sont sortis de l'ecran
-	for (auto it : enemies)
+	for (auto it : enemies){
 		it->Update(deltaTime);
+
+		for (auto shot : player->getShots()){
+			if (shot->alive == true){
+				if (it->alive == true){
+					for (int i = 0; i < 3; i++){
+						for (int j = 0; j < 3; j++){
+							if (shot->x == it->x + i && shot->y == it->y + j){
+								it->alive = false;
+								shot->alive = false;
+								player->addScore(it->scoreValue);
+							}
+						}
+					}
+				}
+			}
+		}
+	}
 }
 
 int EntityManager::GetPlayerScore(){

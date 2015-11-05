@@ -20,7 +20,10 @@ public:
 	Player();
 	~Player();
 
+	inline std::vector<Shot*>& getShots() { return shots; }
+
 	inline int getScore() { return score; }
+	inline void addScore(int _score) { score += _score; }
 
 	virtual void Update(long int time);
 	virtual void Draw(CHAR_INFO _consoleBuffer[SCREEN_WIDTH][SCREEN_HEIGHT]);
