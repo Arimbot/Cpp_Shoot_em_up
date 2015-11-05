@@ -18,6 +18,7 @@ public:
 	static void DeleteInstance();
 	void Update(long int deltaTime);
 	~WavesManager();
+	bool ThereAreAnyEnemies(); // verify if there are enemies to be added
 
 private:
 	static WavesManager* instance;
@@ -33,6 +34,5 @@ private:
 	Wave* ReadWave(string file);
 	WaveEntry ReadEntry(string line);
 	bool IsTimeToAddEnemies();
-	bool ThereIsAnyEnemies(); // verify if there are enemies to be added
 };
 

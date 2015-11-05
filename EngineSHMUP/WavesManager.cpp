@@ -55,13 +55,13 @@ void WavesManager::Update(long int deltaTime) {
 		UpdateEnemyInterval(deltaTime);
 	}
 
-	if (IsTimeToAddEnemies() && ThereIsAnyEnemies()) {
+	if (IsTimeToAddEnemies() && ThereAreAnyEnemies()) {
 		AddEnemiesToScene();
 	}	
 }
 
 void WavesManager::AddEnemiesToScene () {
-	while (IsTimeToAddEnemies() && ThereIsAnyEnemies()){
+	while (IsTimeToAddEnemies() && ThereAreAnyEnemies()){
 		AddEnemyToScene();
 	}
 }
@@ -83,7 +83,7 @@ void WavesManager::UpdateEnemyInterval(long int deltaTime) {
 	timeFromLastEnemy += deltaTime;
 }
 
-bool WavesManager::ThereIsAnyEnemies() {
+bool WavesManager::ThereAreAnyEnemies() {
 	return !currentWave->waveEntries.empty();
 }
 

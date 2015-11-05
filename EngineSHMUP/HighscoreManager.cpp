@@ -16,6 +16,9 @@ int HighscoreManager::LoadHighscore(){
 	return highscore;
 }
 
+/*
+	Save the highscore in the file
+*/
 void HighscoreManager::SaveHighscore(int score){
 	FILE* hs = NULL;
 

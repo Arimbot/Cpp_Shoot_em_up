@@ -5,6 +5,7 @@
 #include "Player.h"
 #include <vector>
 #include "CollisionHandler.h"
+#include "WavesManager.h"
 
 using namespace std;
 
@@ -27,8 +28,11 @@ public:
 private:
 	static EntityManager* instance;
 	EntityManager();
+	
 	void CheckPlayerCollisionWithEnemy(AEnemy* enemy);
 	void CheckPlayerShotCollisionWithEnemy(AEnemy* enemy);
+	bool AreAllEnemiesDefeated();
+
 	void Dispose();
 };
 

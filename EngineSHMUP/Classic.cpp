@@ -35,7 +35,7 @@ void Classic::Update(long int time){
 
 		if (moveValueH >= 1.0f){
 			if (y + 1 >= SCREEN_HEIGHT)
-				isAlive = false;
+				y = 0;
 			else{
 				y += 1;
 

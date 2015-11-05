@@ -64,7 +64,11 @@ int EntityManager::GetPlayerScore(){
 }
 
 bool EntityManager::IsEndOfGame(){
-	return player == NULL || !player->isAlive;
+	return player == NULL || !player->isAlive || AreAllEnemiesDefeated();
+}
+
+bool EntityManager::AreAllEnemiesDefeated(){
+	return enemies.empty() && !WavesManager::GetInstance()->ThereAreAnyEnemies();
 }
 
 EntityManager* EntityManager::GetInstance() {
