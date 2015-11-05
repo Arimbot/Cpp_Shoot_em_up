@@ -6,7 +6,7 @@
 int HighscoreManager::LoadHighscore(){
 	FILE* hs = NULL;
 
-	fopen_s(&hs, "hs.txt", "r");
+	fopen_s(&hs, "data2", "r");
 	int highscore = 0;
 
 	if (hs != NULL){
@@ -23,7 +23,7 @@ int HighscoreManager::LoadHighscore(){
 void HighscoreManager::SaveHighscore(int score){
 	FILE* hs = NULL;
 
-	fopen_s(&hs, "hs.txt", "w");
+	fopen_s(&hs, "data2", "w");
 
 	if (hs != NULL){
 		fprintf_s(hs, "%d", score);

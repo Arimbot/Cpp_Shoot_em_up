@@ -108,10 +108,8 @@
     <ClInclude Include="WavesManager.h" />
   </ItemGroup>
   <ItemGroup>
-    <Text Include="vague1.txt" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="ClassDiagram.cd" />
+    <None Include="data1" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
