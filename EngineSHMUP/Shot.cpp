@@ -6,7 +6,7 @@ Shot::Shot(){
 
 	color = 0x0B;
 
-	speed = 0.060f;
+	speed = 0.120f;
 
 	directionH = UP;
 }

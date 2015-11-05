@@ -32,17 +32,6 @@ void Player::Draw(CHAR_INFO _consoleBuffer[SCREEN_WIDTH][SCREEN_HEIGHT]){
 
 void Player::Move(long int _time){
 	if (alive == true){
-
-		timeFromLastShot += intervalBetweenShots * _time;
-
-		if ((GetAsyncKeyState('A') & 0x8000) && timeFromLastShot > 1.0f){
-			Shot* shot = new Shot();
-			shot->x = x;
-			shot->y = y-1;
-			shots.push_back(shot);
-			timeFromLastShot = 0.0f;
-		}
-
 		////////////horizontalement\\\\\\\\\\\\
 
 		/*
@@ -124,8 +113,32 @@ void Player::Move(long int _time){
 
 			moveValueV = 0.0f;
 		}
+	}
+}
 
-		for (auto shot : shots)
-			shot->Move(_time);
+void Player::Shoot(long int _time){
+	ManageShooting(_time);
+	ManageShots(_time);
+}
+
+void Player::ManageShooting(long int _time){
+	timeFromLastShot += intervalBetweenShots * _time;
+
+	if ((GetAsyncKeyState('A') & 0x8000) && timeFromLastShot > 1.0f){
+		Shot* shot = new Shot();
+		shot->x = x;
+		shot->y = y - 1;
+		shots.push_back(shot);
+		timeFromLastShot = 0.0f;
+	}
+}
+
+void Player::ManageShots(long int _time){
+	for (std::vector<Shot*>::iterator it = shots.begin(); it != shots.end();){
+		(*it)->Move(_time);
+		if (!(*it)->alive)
+			it = shots.erase(it);
+		else
+			it++;
 	}
 }

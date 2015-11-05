@@ -7,3 +7,9 @@
 *.log
 *.user
 *.tlog
+<<<<<<< HEAD
+=======
+*.lastbuildstate
+*.idb
+EngineSHMUP.sdf
+>>>>>>> c1faf0a614b532991770aec68bacd69a7832e0d1
