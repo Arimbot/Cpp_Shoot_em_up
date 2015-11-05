@@ -57,7 +57,7 @@ void StateGame::Render(long int time, CHAR_INFO _consoleBuffer[SCREEN_WIDTH][SCR
 	RenderString(_consoleBuffer, WALLSIZE + 1, 3, "Score: " + std::to_string(EntityManager::GetInstance()->GetPlayerScore()), 0x0F);
 
 	if (pause == true)
-		RenderString(_consoleBuffer, 38, 35, "PAUSE", 0x0C);
+		RenderString(_consoleBuffer, 27, 25, "PAUSE", 0x0C);
 }
 
 /*

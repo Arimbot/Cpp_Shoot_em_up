@@ -7,7 +7,7 @@ EntityManager::EntityManager(){
 	
 	//TODO read player position from XML
 	player->x = 40;
-	player->y = 74;
+	player->y = 52;
 }
 
 /*

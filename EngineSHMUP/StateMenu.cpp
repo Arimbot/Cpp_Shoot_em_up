@@ -16,13 +16,13 @@ STATES StateMenu::Update(long int time) {
 void StateMenu::Render(long int time, CHAR_INFO _consoleBuffer[SCREEN_WIDTH][SCREEN_HEIGHT]) {
 	RenderFrame(_consoleBuffer);
 
-	RenderString(_consoleBuffer, 33, 15, "SHmUP ENGINE II.5", 0x0C);
-	RenderString(_consoleBuffer, 15, 57, "1. JOUER", 0x0E);
-	RenderString(_consoleBuffer, 15, 60, "Q. QUITTER", 0x0E);
+	RenderString(_consoleBuffer, 22, 15, "SHmUP ENGINE II.5", 0x0C);
+	RenderString(_consoleBuffer, 15, 35, "1. JOUER", 0x0E);
+	RenderString(_consoleBuffer, 15, 38, "Q. QUITTER", 0x0E);
 
 	RenderString(_consoleBuffer, 5, 5, "Highscore: " + std::to_string(highscore), 0x0B);
 
-	RenderString(_consoleBuffer, 64, 74, "CREDITS: _", 0x0B);
+	RenderString(_consoleBuffer, 42, 52, "CREDITS: _", 0x0B);
 
 	//static int frames = 0;
 	//RenderString(_consoleBuffer, 0, 0, "Frames: " + std::to_string((unsigned int)frames), 0x0B);
