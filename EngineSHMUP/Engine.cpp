@@ -88,8 +88,6 @@ Engine::~Engine() {
 	}
 }
 
-
-
 Engine* Engine::GetInstance() {
 	if (instance == NULL) {
 		instance = new Engine;

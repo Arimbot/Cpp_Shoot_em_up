@@ -14,7 +14,6 @@ private:
 
 	void ManageShooting(long int time);
 	void ManageShots(long int time);
-	void Shoot(long int time);
 	void Move(long int time);
 public:
 	Player();

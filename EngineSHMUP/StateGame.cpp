@@ -34,7 +34,7 @@ STATES StateGame::Update(long int time) {
 		if (swapWalls > 10.0f)
 			swapWalls = 0.0f;
 
-		wavesManager.Update(time);
+		WavesManager::GetInstance()->Update(time);
 		EntityManager::GetInstance()->Update(time);
 	}
 

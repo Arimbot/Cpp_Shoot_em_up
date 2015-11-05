@@ -30,6 +30,7 @@ void Player::Draw(CHAR_INFO _consoleBuffer[SCREEN_WIDTH][SCREEN_HEIGHT]){
 		shot->Draw(_consoleBuffer);
 }
 
+//TODO extract this logic from player and put it in PlayerManager.
 void Player::Move(long int time){
 	////////////horizontalement\\\\\\\\\\\\
 
@@ -117,13 +118,10 @@ void Player::Move(long int time){
 void Player::Update(long int time){
 	if (isAlive == true) {
 		Move(time);
-		Shoot(time);
+		ManageShooting(time);
 	}
-}
 
-void Player::Shoot( long int time ){
-	ManageShooting( time );
-	ManageShots( time );
+	ManageShots(time);
 }
 
 /*

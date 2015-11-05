@@ -11,10 +11,7 @@
 
 class StateGame : public AState{
 private:
-
 	int highscore;
-
-	WavesManager wavesManager;
 
 	bool pause;
 
