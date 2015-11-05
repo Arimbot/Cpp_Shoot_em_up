@@ -5,7 +5,7 @@
 #include "Classic.h"
 #include "ClassicShooter.h"
 
-static class EnemyFactory
+class EnemyFactory
 {
 public:
 	static AEnemy* CreateEnemy(enemyType_t enemyType);

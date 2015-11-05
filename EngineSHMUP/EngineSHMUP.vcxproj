@@ -70,6 +70,7 @@
     <ClCompile Include="Boss.cpp" />
     <ClCompile Include="Classic.cpp" />
     <ClCompile Include="ClassicShooter.cpp" />
+    <ClCompile Include="CollisionHandler.cpp" />
     <ClCompile Include="EnemyFactory.cpp" />
     <ClCompile Include="Engine.cpp" />
     <ClCompile Include="EntityManager.cpp" />
@@ -89,6 +90,7 @@
     <ClInclude Include="Boss.h" />
     <ClInclude Include="Classic.h" />
     <ClInclude Include="ClassicShooter.h" />
+    <ClInclude Include="CollisionHandler.h" />
     <ClInclude Include="const.h" />
     <ClInclude Include="EnemyFactory.h" />
     <ClInclude Include="enemyType_t.h" />

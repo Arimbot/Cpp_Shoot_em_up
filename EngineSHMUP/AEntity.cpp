@@ -32,6 +32,7 @@ void AEntity::Draw(CHAR_INFO _consoleBuffer[SCREEN_WIDTH][SCREEN_HEIGHT]){
 					if (image[j][i] != ' '){
 						_consoleBuffer[y + j][x + i].Char.AsciiChar = image[j][i];
 						_consoleBuffer[y + j][x + i].Attributes = color;
+						_consoleBuffer[y + j][x + i].Attributes = color;
 					}
 				}
 			}
