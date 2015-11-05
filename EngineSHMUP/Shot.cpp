@@ -1,6 +1,8 @@
 #include "Shot.h"
 
-
+/*
+	Entity that represents the shot of other entities, like enemies and the player
+*/
 Shot::Shot(){
 	image[1][1] = '|';
 
@@ -16,6 +18,9 @@ Shot::~Shot(){
 
 }
 
+/*
+	Move straight and foward
+*/
 void Shot::Update(long int time){
 	if (isAlive == true){
 		moveValueH += speed * time;

@@ -4,6 +4,8 @@ EntityManager* EntityManager::instance = NULL;
 
 EntityManager::EntityManager(){
 	player = new Player();
+	
+	//TODO read player position from XML
 	player->x = 40;
 	player->y = 74;
 }
@@ -21,32 +23,39 @@ void EntityManager::DrawEntities(CHAR_INFO _consoleBuffer[SCREEN_WIDTH][SCREEN_H
 /*
 	Bouge le player et les enemies
 */
-void EntityManager::MoveEntities(long int deltaTime){	
+void EntityManager::Update(long int deltaTime){	
 	player->Update(deltaTime);
 
-	// ajouter code pour deleter enemies morts ou qui sont sortis de l'ecran
 	for (std::vector<AEnemy*>::iterator it = enemies.begin(); it != enemies.end();){
 		AEnemy* enemy = (*it);
 
-		if (enemy->isAlive && player->isAlive && CollisionHandler::EntityCollidesEntity((*player), (*enemy))){
-			enemy->isAlive = false;
-			player->isAlive = false;
-		}
-
-		for (auto shot : player->getShots()){
-			if (shot->isAlive && enemy->isAlive && CollisionHandler::ShotCollidesEntity((*shot), (*enemy))){
-				enemy->isAlive = false;
-				shot->isAlive = false;
-				player->addScore(enemy->scoreValue);
-			}
-		}
+		CheckPlayerCollisionWithEnemy(enemy);
+		CheckPlayerShotCollisionWithEnemy(enemy);
 		
 		enemy->Update(deltaTime);
-
+		
 		if (!enemy->isAlive)
-			it = enemies.erase(it);
+			it = enemies.erase(it); // should not increment iterator
 		else
-			it++;
+			it++; 
+	}
+}
+
+void EntityManager::CheckPlayerCollisionWithEnemy(AEnemy* enemy){
+	if (enemy->isAlive && player->isAlive && CollisionHandler::EntityCollidesEntity((*player), (*enemy))){
+		enemy->isAlive = false;
+		player->isAlive = false;
+	}
+}
+
+void EntityManager::CheckPlayerShotCollisionWithEnemy(AEnemy* enemy){
+	//TODO extract player managing to PlayerManager and extract the code of shots from player to EntityManager
+	for (auto shot : player->getShots()){
+		if (shot->isAlive && enemy->isAlive && CollisionHandler::ShotCollidesEntity((*shot), (*enemy))){
+			enemy->isAlive = false;
+			shot->isAlive = false;
+			player->addScore(enemy->scoreValue);
+		}
 	}
 }
 

@@ -19,9 +19,9 @@ bool CollisionHandler::ShotCollidesEntity(Shot shot, AEntity entity){
 */
 bool CollisionHandler::EntityCollidesEntity(AEntity entity, AEntity other){
 	bool isOutOfBoxCollision = entity.x + 2 < other.x; // if entity is beside (right) the other entity
-	isOutOfBoxCollision = entity.x > other.x + 2; // if entity is beside (left) the other entity
-	isOutOfBoxCollision = entity.y + 2 < other.y; // if entity is below the other entity
-	isOutOfBoxCollision = entity.y > other.y + 2; // if entity is above the other entity
+	isOutOfBoxCollision |= entity.x > other.x + 2; // if entity is beside (left) the other entity
+	isOutOfBoxCollision |= entity.y + 2 < other.y; // if entity is below the other entity
+	isOutOfBoxCollision |= entity.y > other.y + 2; // if entity is above the other entity
 
 	return !isOutOfBoxCollision; //any other case is a collision
 }

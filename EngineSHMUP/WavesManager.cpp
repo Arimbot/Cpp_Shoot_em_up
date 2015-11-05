@@ -1,5 +1,7 @@
 #include "WavesManager.h"
 
+WavesManager* WavesManager::instance = NULL;
+
 /*
 	Reads a wave of enemies from a file and add them to the entities collection
 	The format:
@@ -44,7 +46,7 @@ WaveEntry WavesManager::ReadEntry ( string line ) {
 	return entry;
 }
 
-void WavesManager::Events ( long int deltaTime ) {	
+void WavesManager::Update(long int deltaTime) {
 	if ( currentWave == NULL ) {
 		currentWave = ReadWave("vague1.txt");
 		timeFromLastEnemy = 0;
@@ -96,4 +98,18 @@ WavesManager::WavesManager () {
 WavesManager::~WavesManager () {
 	delete currentWave;
 	currentWave = NULL;
+}
+
+WavesManager* WavesManager::GetInstance() {
+	if (instance == NULL)
+		instance = new WavesManager;
+
+	return instance;
+}
+
+void WavesManager::DeleteInstance() {
+	if (instance != NULL) {
+		delete instance;
+		instance = NULL;
+	}
 }

@@ -15,7 +15,7 @@ int main(int argc, char* argv[]) {
 		deltaTime = currentTime - lastTime;
 		lastTime = currentTime;
 
-		engine->Events(deltaTime);
+		engine->Update(deltaTime);
 
 		engine->Render(deltaTime);
 	}

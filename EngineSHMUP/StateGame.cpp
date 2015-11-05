@@ -19,10 +19,10 @@ swapWallsSpeed(0.05f)
 	moveWalls.start();
 }
 
-STATES StateGame::Events(long int time) {
-	if (GetAsyncKeyState(VK_ESCAPE) & 0x8000 && !(GetAsyncKeyState(VK_RETURN) & 0x8000))
+STATES StateGame::Update(long int time) {
+	if (GetAsyncKeyState(VK_ESCAPE) & BEING_PRESSED && !(GetAsyncKeyState(VK_RETURN) & BEING_PRESSED))
 		pause = true;
-	else if (GetAsyncKeyState(VK_RETURN) & 0x8000 && !(GetAsyncKeyState(VK_ESCAPE) & 0x8000))
+	else if (GetAsyncKeyState(VK_RETURN) & BEING_PRESSED && !(GetAsyncKeyState(VK_ESCAPE) & BEING_PRESSED))
 		pause = false;
 
 	/*
@@ -34,8 +34,8 @@ STATES StateGame::Events(long int time) {
 		if (swapWalls > 10.0f)
 			swapWalls = 0.0f;
 
-		wavesManager.Events(time);
-		EntityManager::GetInstance()->MoveEntities(time);
+		WavesManager::GetInstance()->Update(time);
+		EntityManager::GetInstance()->Update(time);
 	}
 
 	return GAME;

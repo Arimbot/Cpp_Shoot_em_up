@@ -13,10 +13,10 @@ StateMenu::StateMenu() {
 }
 
 
-STATES StateMenu::Events(long int time) {
-	if (GetAsyncKeyState('1') & 0x8000)
+STATES StateMenu::Update(long int time) {
+	if (GetAsyncKeyState('1') & BEING_PRESSED)
 		return GAME;
-	else if (GetAsyncKeyState('Q') & 0x8000)
+	else if (GetAsyncKeyState('Q') & BEING_PRESSED)
 		return CLOSE;
 
 	return MENU;

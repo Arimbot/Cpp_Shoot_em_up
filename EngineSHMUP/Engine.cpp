@@ -88,8 +88,6 @@ Engine::~Engine() {
 	}
 }
 
-
-
 Engine* Engine::GetInstance() {
 	if (instance == NULL) {
 		instance = new Engine;
@@ -134,10 +132,10 @@ void Engine::Render(long int time) {
 /*
 	Evenements du moteur appelant les controles du mode selectionne
 */
-void Engine::Events(long int time) {
+void Engine::Update(long int time) {
 	//Call the selected state Events() and set the next state
 	if (currentState != CLOSE)
-		currentState = states[currentState]->Events(time);
+		currentState = states[currentState]->Update(time);
 
 	if (currentState == CLOSE)
 		running = false;
