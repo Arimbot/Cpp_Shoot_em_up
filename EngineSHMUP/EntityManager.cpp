@@ -81,8 +81,9 @@ void EntityManager::DeleteInstance() {
 	}
 }
 
-EntityManager::~EntityManager(){
+void EntityManager::Dispose(){
 	if (player != NULL){
+		player->Dispose();
 		delete player;
 		player = NULL;
 	}
@@ -93,4 +94,8 @@ EntityManager::~EntityManager(){
 			it = NULL;
 		}
 	}
+}
+
+EntityManager::~EntityManager(){
+	Dispose();
 }

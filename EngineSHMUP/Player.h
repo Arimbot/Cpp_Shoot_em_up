@@ -19,6 +19,8 @@ public:
 	Player();
 	~Player();
 
+	void Dispose();
+
 	inline std::vector<Shot*>& getShots() { return shots; }
 
 	inline int getScore() { return score; }

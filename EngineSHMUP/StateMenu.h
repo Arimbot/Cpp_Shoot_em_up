@@ -5,10 +5,7 @@
 
 class StateMenu: public AState{
 private:
-
-	int highscore;
 	void RenderFrame(CHAR_INFO _consoleBuffer[SCREEN_WIDTH][SCREEN_HEIGHT]);
-
 public:
 	StateMenu();
 

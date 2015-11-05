@@ -74,6 +74,7 @@
     <ClCompile Include="EnemyFactory.cpp" />
     <ClCompile Include="Engine.cpp" />
     <ClCompile Include="EntityManager.cpp" />
+    <ClCompile Include="HighscoreManager.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="Shot.cpp" />
@@ -96,6 +97,7 @@
     <ClInclude Include="enemyType_t.h" />
     <ClInclude Include="Engine.h" />
     <ClInclude Include="EntityManager.h" />
+    <ClInclude Include="HighscoreManager.h" />
     <ClInclude Include="NYTimer.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="Shot.h" />

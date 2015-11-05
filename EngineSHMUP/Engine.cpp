@@ -135,8 +135,15 @@ void Engine::Render(long int time) {
 */
 void Engine::Update(long int time) {
 	//Call the selected state Events() and set the next state
-	if (currentState != CLOSE)
-		currentState = states[currentState]->Update(time);
+	if (currentState != CLOSE){
+		STATES nextState = states[currentState]->Update(time);
+
+		if (nextState != currentState && nextState != CLOSE)
+			states[nextState]->RefreshHighscore();
+
+		currentState = nextState;
+	}
+		
 
 	if (currentState == CLOSE)
 		running = false;

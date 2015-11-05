@@ -29,6 +29,7 @@ private:
 	EntityManager();
 	void CheckPlayerCollisionWithEnemy(AEnemy* enemy);
 	void CheckPlayerShotCollisionWithEnemy(AEnemy* enemy);
+	void Dispose();
 };
 
 #endif

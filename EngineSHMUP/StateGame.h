@@ -11,8 +11,6 @@
 
 class StateGame : public AState{
 private:
-	int highscore;
-
 	bool pause;
 
 	NYTimer moveWalls;
@@ -23,6 +21,7 @@ private:
 	STATES EndGame();
 public:
 	StateGame();
+	~StateGame();
 
 	virtual STATES Update(long int time);
 	virtual void Render(long int time, CHAR_INFO _consoleBuffer[SCREEN_WIDTH][SCREEN_HEIGHT]);

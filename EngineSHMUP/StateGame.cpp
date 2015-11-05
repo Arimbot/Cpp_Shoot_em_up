@@ -1,27 +1,18 @@
 #include "StateGame.h"
 
 StateGame::StateGame()
-:
-pause(false),
-swapWalls(0.0f),
-swapWallsSpeed(0.05f)
+	:
+	pause(false),
+	swapWalls(0.0f),
+	swapWallsSpeed(0.05f)
 {
-	FILE* hs = NULL;
-
-	fopen_s(&hs, "hs.txt", "r");
-
-	if (hs != NULL){
-		fscanf_s(hs, "%d", &highscore);
-	}
-
-	fclose(hs);
-
+	RefreshHighscore();
 	moveWalls.start();
 }
 
 STATES StateGame::Update(long int time) {
 	STATES state = GAME;
-	
+
 	if (GetAsyncKeyState(VK_ESCAPE) & BEING_PRESSED && !(GetAsyncKeyState(VK_RETURN) & BEING_PRESSED))
 		pause = true;
 	else if (GetAsyncKeyState(VK_RETURN) & BEING_PRESSED && !(GetAsyncKeyState(VK_ESCAPE) & BEING_PRESSED))
@@ -29,7 +20,7 @@ STATES StateGame::Update(long int time) {
 
 	/*
 		Hors etat de pause, tous les calculs de mouvements doivent etre effectues ici
-	*/
+		*/
 	if (pause == false) {
 		swapWalls += swapWallsSpeed * time;
 
@@ -38,6 +29,9 @@ STATES StateGame::Update(long int time) {
 
 		WavesManager::GetInstance()->Update(time);
 		EntityManager::GetInstance()->Update(time);
+
+		if (EntityManager::GetInstance()->GetPlayerScore() > highscore)
+			highscore = EntityManager::GetInstance()->GetPlayerScore();
 	}
 
 	if (EntityManager::GetInstance()->IsEndOfGame())
@@ -49,6 +43,8 @@ STATES StateGame::Update(long int time) {
 STATES StateGame::EndGame(){
 	EntityManager::DeleteInstance();
 	WavesManager::DeleteInstance();
+	HighscoreManager::SaveHighscore(highscore);
+
 	return MENU;
 }
 
@@ -90,4 +86,8 @@ void StateGame::RenderWalls(CHAR_INFO _consoleBuffer[SCREEN_WIDTH][SCREEN_HEIGHT
 			_consoleBuffer[i][SCREEN_WIDTH - 1 - j].Attributes = 0x2A;
 		}
 	}
+}
+
+StateGame::~StateGame(){
+	EndGame();
 }

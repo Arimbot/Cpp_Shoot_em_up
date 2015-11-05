@@ -13,3 +13,7 @@ void AState::RenderString(CHAR_INFO _consoleBuffer[SCREEN_WIDTH][SCREEN_HEIGHT],
 		}
 	}
 }
+
+void AState::RefreshHighscore(){
+	highscore = HighscoreManager::LoadHighscore();
+}

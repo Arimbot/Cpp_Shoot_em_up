@@ -152,3 +152,10 @@ void Player::ManageShots( long int time ){
 			it++;
 	}
 }
+
+void Player::Dispose(){
+	for (auto shot : shots){
+		delete shot;
+		shot = NULL;
+	}
+}
