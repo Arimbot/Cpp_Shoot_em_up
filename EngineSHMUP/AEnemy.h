@@ -7,7 +7,7 @@ class AEnemy :
 public:
 	int scoreValue;
 
-	virtual void Move(long int _time);
+	virtual void Update(long int time);
 
 	AEnemy();
 	~AEnemy();

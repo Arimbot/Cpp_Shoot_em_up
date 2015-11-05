@@ -2,7 +2,8 @@
 
 Player::Player(){
 	score = 0;
-	timeFromLastShot = 0.0f;
+	timeFromLastShot = 0;
+	intervalBetweenShots = 200; // in miliseconds
 
 	image[1][0] = '/';
 	image[0][1] = '^';
@@ -13,7 +14,6 @@ Player::Player(){
 	color = 0x0B;
 
 	speed = 0.060f;
-	intervalBetweenShots = 0.003f;
 
 	directionH = UP;
 	directionV = LEFT;
@@ -30,112 +30,124 @@ void Player::Draw(CHAR_INFO _consoleBuffer[SCREEN_WIDTH][SCREEN_HEIGHT]){
 		shot->Draw(_consoleBuffer);
 }
 
-void Player::Move(long int _time){
-	if (alive == true){
-		////////////horizontalement\\\\\\\\\\\\
+void Player::Move(long int time){
+	////////////horizontalement\\\\\\\\\\\\
 
-		/*
-			Observe le maintien de la touche et annule le deplacement en cours si celle-ci change
-		*/
-		if (GetAsyncKeyState(VK_LEFT) & 0x8000){
-			if (directionH != LEFT && moveValueH != 0.0f){
-				directionH = LEFT;
-				moveValueH = 0.0f;
-				moveValueV = 0.0f;
-			}
-
-			moveValueH += speed * _time;
-		}
-		else if (GetAsyncKeyState(VK_RIGHT) & 0x8000){
-			if (directionH != RIGHT && moveValueH != 0.0f){
-				directionH = RIGHT;
-				moveValueH = 0.0f;
-				moveValueV = 0.0f;
-			}
-
-			moveValueH += speed * _time;
+	/*
+	Observe le maintien de la touche et annule le deplacement en cours si celle-ci change
+	*/
+	if (GetAsyncKeyState(VK_LEFT) & BEING_PRESSED){
+		if (directionH != LEFT && moveValueH != 0.0f){
+			directionH = LEFT;
+			moveValueH = 0.0f;
+			moveValueV = 0.0f;
 		}
 
-		/*
-			Applique le deplacement en fonction de la touche qui a ete maintenue
-		*/
-		if (moveValueH >= 1.0f){
-			switch (directionH){
-			case LEFT:
-				if (x > WALLSIZE + 1){
-					x -= 1;
-				}
-				break;
-			case RIGHT:
-				if (x + 2 + 1 < SCREEN_WIDTH - WALLSIZE - 1){
-					x += 1;
-				}
-				break;
-			}
+		moveValueH += speed * time;
+	}
+	else if (GetAsyncKeyState(VK_RIGHT) & BEING_PRESSED){
+		if (directionH != RIGHT && moveValueH != 0.0f){
+			directionH = RIGHT;
+			moveValueH = 0.0f;
+			moveValueV = 0.0f;
+		}
 
+		moveValueH += speed * time;
+	}
+
+	/*
+	Applique le deplacement en fonction de la touche qui a ete maintenue
+	*/
+	if (moveValueH >= 1.0f){
+		switch (directionH){
+		case LEFT:
+			if (x > WALLSIZE + 1){
+				x -= 1;
+			}
+			break;
+		case RIGHT:
+			if (x + 2 + 1 < SCREEN_WIDTH - WALLSIZE - 1){
+				x += 1;
+			}
+			break;
+		}
+
+		moveValueH = 0.0f;
+	}
+
+	////////////verticalement\\\\\\\\\\\\
+
+	if (GetAsyncKeyState(VK_UP) & BEING_PRESSED){
+		if (directionV != UP && moveValueV != 0.0f){
+			directionV = UP;
+			moveValueV = 0.0f;
 			moveValueH = 0.0f;
 		}
 
-		////////////verticalement\\\\\\\\\\\\
-
-		if (GetAsyncKeyState(VK_UP) & 0x8000){
-			if (directionV != UP && moveValueV != 0.0f){
-				directionV = UP;
-				moveValueV = 0.0f;
-				moveValueH = 0.0f;
-			}
-
-			moveValueV += speed * _time;
-		}
-		else if (GetAsyncKeyState(VK_DOWN) & 0x8000){
-			if (directionV != DOWN && moveValueV != 0.0f){
-				directionV = DOWN;
-				moveValueV = 0.0f;
-				moveValueH = 0.0f;
-			}
-
-			moveValueV += speed * _time;
-		}
-
-		if (moveValueV >= 1.0f){
-			switch (directionV){
-			case DOWN:
-				if (y + 2 + 1 < SCREEN_HEIGHT - 1){
-					y += 1;
-				}
-				break;
-			case UP:
-				if (y - 1 > 5){
-					y -= 1;
-				}
-				break;
-			}
-
+		moveValueV += speed * time;
+	}
+	else if (GetAsyncKeyState(VK_DOWN) & BEING_PRESSED){
+		if (directionV != DOWN && moveValueV != 0.0f){
+			directionV = DOWN;
 			moveValueV = 0.0f;
+			moveValueH = 0.0f;
 		}
+
+		moveValueV += speed * time;
+	}
+
+	if (moveValueV >= 1.0f){
+		switch (directionV){
+		case DOWN:
+			if (y + 2 + 1 < SCREEN_HEIGHT - 1){
+				y += 1;
+			}
+			break;
+		case UP:
+			if (y - 1 > 5){
+				y -= 1;
+			}
+			break;
+		}
+
+		moveValueV = 0.0f;
 	}
 }
 
-void Player::Shoot(long int _time){
-	ManageShooting(_time);
-	ManageShots(_time);
+void Player::Update(long int time){
+	if ( alive == true ) {
+		Move(time);
+		Shoot(time);
+	}
 }
 
-void Player::ManageShooting(long int _time){
-	timeFromLastShot += intervalBetweenShots * _time;
+void Player::Shoot( long int time ){
+	ManageShooting( time );
+	ManageShots( time );
+}
 
-	if ((GetAsyncKeyState('A') & 0x8000) && timeFromLastShot > 1.0f){
+/*
+	Verify if the player tried to shoot. If so, create a shot entity and add into the shots collection to be managed.
+*/
+void Player::ManageShooting( long int time ){
+	timeFromLastShot += time; // increment shooting time
+
+	if ((GetAsyncKeyState('A') & BEING_PRESSED) && timeFromLastShot > intervalBetweenShots){
 		Shot* shot = new Shot();
 		shot->x = x;
-		shot->y = y - 1;
-		shots.push_back(shot);
-		timeFromLastShot = 0.0f;
+		shot->y = y - 1; // create a shot in front of the player
+		shots.push_back( shot );
+		timeFromLastShot = 0; // reset shooting time
 	}
 }
 
-void Player::ManageShots(long int _time){
+/*
+	Update shots and remove them if they went off the screen
+*/
+void Player::ManageShots( long int time ){
 	for (std::vector<Shot*>::iterator it = shots.begin(); it != shots.end();){
-		(*it)->Move(_time);
+		(*it)->Update(time);
+		
 		if (!(*it)->alive)
 			it = shots.erase(it);
 		else

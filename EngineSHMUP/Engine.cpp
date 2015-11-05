@@ -121,12 +121,12 @@ void Engine::ClearBuffer(){
 /*
 	Rendu du moteur appelant le rendu specifique du mode selectionne
 */
-void Engine::Render(long int _time) {
+void Engine::Render(long int time) {
 	ClearBuffer();
 
 	//Call the selected state Render():
 	if (currentState != CLOSE)
-		states[currentState]->Render(_time, consoleBuffer);
+		states[currentState]->Render(time, consoleBuffer);
 
 	WriteConsoleOutput(hOutput, (CHAR_INFO *)consoleBuffer, dwBufferSize, dwBufferCoord, &rcRegion);
 }
@@ -134,10 +134,10 @@ void Engine::Render(long int _time) {
 /*
 	Evenements du moteur appelant les controles du mode selectionne
 */
-void Engine::Events(long int _time) {
+void Engine::Events(long int time) {
 	//Call the selected state Events() and set the next state
 	if (currentState != CLOSE)
-		currentState = states[currentState]->Events(_time);
+		currentState = states[currentState]->Events(time);
 
 	if (currentState == CLOSE)
 		running = false;

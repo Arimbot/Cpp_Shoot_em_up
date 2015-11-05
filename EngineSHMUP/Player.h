@@ -8,21 +8,22 @@
 class Player : public AEntity{
 private:
 	int score;
-	float timeFromLastShot;
+	long int timeFromLastShot;
 	float intervalBetweenShots;
 	std::vector<Shot*> shots;
 
-	void ManageShooting(long int _time);
-	void ManageShots(long int _time);
+	void ManageShooting(long int time);
+	void ManageShots(long int time);
+	void Shoot(long int time);
+	void Move(long int time);
 public:
 	Player();
 	~Player();
 
 	inline int getScore() { return score; }
 
-	virtual void Move(long int _time);
+	virtual void Update(long int time);
 	virtual void Draw(CHAR_INFO _consoleBuffer[SCREEN_WIDTH][SCREEN_HEIGHT]);
-	void Shoot(long int _time);
 };
 
 #endif

@@ -22,14 +22,11 @@ void EntityManager::DrawEntities(CHAR_INFO _consoleBuffer[SCREEN_WIDTH][SCREEN_H
 	Bouge le player et les enemies
 */
 void EntityManager::MoveEntities(long int deltaTime){	
-	player->Move(deltaTime);	
-	player->Shoot(deltaTime);
+	player->Update(deltaTime);
 
 	// ajouter code pour deleter enemies morts ou qui sont sortis de l'ecran
 	for (auto it : enemies)
-		it->Move(deltaTime);
-
-
+		it->Update(deltaTime);
 }
 
 int EntityManager::GetPlayerScore(){

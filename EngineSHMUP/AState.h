@@ -14,8 +14,8 @@ protected:
 
 public:
 
-	virtual STATES Events(long int _time) = 0;
-	virtual void Render(long int _time, CHAR_INFO _consoleBuffer[SCREEN_WIDTH][SCREEN_HEIGHT]) = 0;
+	virtual STATES Events(long int time) = 0;
+	virtual void Render(long int time, CHAR_INFO _consoleBuffer[SCREEN_WIDTH][SCREEN_HEIGHT]) = 0;
 };
 
 #endif

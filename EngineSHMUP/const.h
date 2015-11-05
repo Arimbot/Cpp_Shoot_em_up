@@ -6,4 +6,6 @@
 
 #define WALLSIZE		4
 
+#define BEING_PRESSED 0x8000
+
 #endif

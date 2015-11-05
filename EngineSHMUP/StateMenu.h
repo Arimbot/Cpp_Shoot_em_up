@@ -11,8 +11,8 @@ private:
 public:
 	StateMenu();
 
-	virtual STATES Events(long int _time);
-	virtual void Render(long int _time, CHAR_INFO _consoleBuffer[SCREEN_WIDTH][SCREEN_HEIGHT]);
+	virtual STATES Events(long int time);
+	virtual void Render(long int time, CHAR_INFO _consoleBuffer[SCREEN_WIDTH][SCREEN_HEIGHT]);
 };
 
 #endif

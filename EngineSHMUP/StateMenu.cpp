@@ -5,7 +5,7 @@ StateMenu::StateMenu() {
 }
 
 
-STATES StateMenu::Events(long int _time) {
+STATES StateMenu::Events(long int time) {
 	if (GetAsyncKeyState('1') & 0x8000)
 		return GAME;
 	else if (GetAsyncKeyState('Q') & 0x8000)
@@ -14,7 +14,7 @@ STATES StateMenu::Events(long int _time) {
 	return MENU;
 }
 
-void StateMenu::Render(long int _time, CHAR_INFO _consoleBuffer[SCREEN_WIDTH][SCREEN_HEIGHT]) {
+void StateMenu::Render(long int time, CHAR_INFO _consoleBuffer[SCREEN_WIDTH][SCREEN_HEIGHT]) {
 	RenderFrame(_consoleBuffer);
 
 	RenderString(_consoleBuffer, 33, 15, "SHmUP ENGINE II.5", 0x0C);

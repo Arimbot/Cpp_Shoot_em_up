@@ -39,6 +39,6 @@ void AEntity::Draw(CHAR_INFO _consoleBuffer[SCREEN_WIDTH][SCREEN_HEIGHT]){
 	}
 }
 
-void AEntity::Move(long int _time){
+void AEntity::Update(long int time){
 
 }

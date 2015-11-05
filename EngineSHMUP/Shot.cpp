@@ -16,9 +16,9 @@ Shot::~Shot(){
 
 }
 
-void Shot::Move(long int _time){
+void Shot::Update(long int time){
 	if (alive == true){
-		moveValueH += speed * _time;
+		moveValueH += speed * time;
 
 		if (moveValueH >= 1.0f){
 			if (y - 1 <= 0)
