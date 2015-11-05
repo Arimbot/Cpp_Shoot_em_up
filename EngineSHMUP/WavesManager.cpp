@@ -49,33 +49,33 @@ WaveEntry WavesManager::ReadEntry ( string line ) {
 void WavesManager::Update(long int deltaTime) {
 	if ( currentWave == NULL ) {
 		currentWave = ReadWave("vague1.txt");
-		timeFromLastEnemy = 0;
+		timeFromLastEnemy = 0; // Reset timer	
 		timeNeededToNextEnemy = 0;
-	} else {
+	} else 
 		UpdateEnemyInterval(deltaTime);
-	}
-
-	if (IsTimeToAddEnemies() && ThereAreAnyEnemies()) {
+	
+	if (IsTimeToAddEnemies() && ThereAreAnyEnemies())
 		AddEnemiesToScene();
-	}	
 }
 
 void WavesManager::AddEnemiesToScene () {
-	while (IsTimeToAddEnemies() && ThereAreAnyEnemies()){
+	while (IsTimeToAddEnemies() && ThereAreAnyEnemies())
 		AddEnemyToScene();
-	}
 }
 
 void WavesManager::AddEnemyToScene() {
+	// Get first entry and remove it from entries collection
 	WaveEntry entry = currentWave->waveEntries.front();
 	currentWave->waveEntries.pop();
 
+	// Create enemy from entry
 	AEnemy* enemy = EnemyFactory::CreateEnemy(entry.enemyType);
 	enemy->x = entry.positionX;
 	enemy->y = entry.positionY;
 	timeNeededToNextEnemy = entry.timeToNextEnemy;
 	timeFromLastEnemy = 0;
 
+	// Push enemy into enemies collection
 	EntityManager::GetInstance()->enemies.push_back(enemy);
 }
 
