@@ -20,7 +20,7 @@ private:
 	float swapWallsSpeed;
 
 	void RenderWalls(CHAR_INFO _consoleBuffer[SCREEN_WIDTH][SCREEN_HEIGHT]);
-
+	STATES EndGame();
 public:
 	StateGame();
 

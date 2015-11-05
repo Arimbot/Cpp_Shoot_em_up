@@ -20,6 +20,8 @@ swapWallsSpeed(0.05f)
 }
 
 STATES StateGame::Update(long int time) {
+	STATES state = GAME;
+	
 	if (GetAsyncKeyState(VK_ESCAPE) & BEING_PRESSED && !(GetAsyncKeyState(VK_RETURN) & BEING_PRESSED))
 		pause = true;
 	else if (GetAsyncKeyState(VK_RETURN) & BEING_PRESSED && !(GetAsyncKeyState(VK_ESCAPE) & BEING_PRESSED))
@@ -38,7 +40,16 @@ STATES StateGame::Update(long int time) {
 		EntityManager::GetInstance()->Update(time);
 	}
 
-	return GAME;
+	if (EntityManager::GetInstance()->IsEndOfGame())
+		state = EndGame();
+
+	return state;
+}
+
+STATES StateGame::EndGame(){
+	EntityManager::DeleteInstance();
+	WavesManager::DeleteInstance();
+	return MENU;
 }
 
 void StateGame::Render(long int time, CHAR_INFO _consoleBuffer[SCREEN_WIDTH][SCREEN_HEIGHT]) {

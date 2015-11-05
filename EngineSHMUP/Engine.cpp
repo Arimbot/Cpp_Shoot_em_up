@@ -34,6 +34,7 @@ int Engine::InitializeView(){
 	Defini la taille de la console
 */
 
+//TODO this wont work in resolution 1024x768
 int Engine::SetConsoleScreenBufferInfo(COORD dwSize)
 {
 	/*

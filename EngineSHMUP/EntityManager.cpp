@@ -63,6 +63,10 @@ int EntityManager::GetPlayerScore(){
 	return player->getScore();
 }
 
+bool EntityManager::IsEndOfGame(){
+	return player == NULL || !player->isAlive;
+}
+
 EntityManager* EntityManager::GetInstance() {
 	if (instance == NULL)
 		instance = new EntityManager;
