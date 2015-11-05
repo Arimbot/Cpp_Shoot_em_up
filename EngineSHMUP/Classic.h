@@ -6,7 +6,7 @@ class Classic :
 	public AEnemy
 {
 public:
-	virtual void Move(long int _time);
+	virtual void Update(long int time);
 
 	Classic();
 	~Classic();

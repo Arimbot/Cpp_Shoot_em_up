@@ -8,6 +8,6 @@ public:
 	Shot();
 	~Shot();
 
-	virtual void Move(long int _time);
+	virtual void Update(long int time);
 };
 

@@ -9,7 +9,7 @@ swapWallsSpeed(0.05f)
 	moveWalls.start();
 }
 
-STATES StateGame::Events(long int _time) {
+STATES StateGame::Events(long int time) {
 	if (GetAsyncKeyState(VK_ESCAPE) & 0x8000 && !(GetAsyncKeyState(VK_RETURN) & 0x8000))
 		pause = true;
 	else if (GetAsyncKeyState(VK_RETURN) & 0x8000 && !(GetAsyncKeyState(VK_ESCAPE) & 0x8000))
@@ -19,19 +19,19 @@ STATES StateGame::Events(long int _time) {
 		Hors etat de pause, tous les calculs de mouvements doivent etre effectues ici
 	*/
 	if (pause == false) {
-		swapWalls += swapWallsSpeed * _time;
+		swapWalls += swapWallsSpeed * time;
 
 		if (swapWalls > 10.0f)
 			swapWalls = 0.0f;
 
-		wavesManager.Events(_time);
-		EntityManager::GetInstance()->MoveEntities(_time);
+		wavesManager.Events(time);
+		EntityManager::GetInstance()->MoveEntities(time);
 	}
 
 	return GAME;
 }
 
-void StateGame::Render(long int _time, CHAR_INFO _consoleBuffer[SCREEN_WIDTH][SCREEN_HEIGHT]) {
+void StateGame::Render(long int time, CHAR_INFO _consoleBuffer[SCREEN_WIDTH][SCREEN_HEIGHT]) {
 	RenderWalls(_consoleBuffer);
 
 	RenderString(_consoleBuffer, 5, 1, "Highscore: ", 0x0B);

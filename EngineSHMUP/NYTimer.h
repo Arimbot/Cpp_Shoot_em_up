@@ -1,5 +1,5 @@
-#ifndef __NY_TIMER__
-#define __NY_TIMER__
+#ifndef __NYtimeR__
+#define __NYtimeR__
 
 #include <windows.h>
 

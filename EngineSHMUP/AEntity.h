@@ -27,7 +27,7 @@ public:
 	char image[ENTITY_SIZE][ENTITY_SIZE];
 	
 	virtual void Draw(CHAR_INFO _consoleBuffer[SCREEN_WIDTH][SCREEN_HEIGHT]);
-	virtual void Move(long int _time) = 0;
+	virtual void Update(long int time) = 0;
 
 	AEntity();
 	~AEntity();

@@ -46,8 +46,8 @@ public:
 	static Engine* GetInstance();
 	void DeleteInstance();
 
-	void Events(long int _time);
-	void Render(long int _time);
+	void Events(long int time);
+	void Render(long int time);
 
 	inline bool IsRunning() { return running; }
 };

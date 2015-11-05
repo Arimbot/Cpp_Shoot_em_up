@@ -29,9 +29,9 @@ Classic::~Classic()
 }
 
 
-void Classic::Move(long int _time){
+void Classic::Update(long int time){
 	if (alive == true){
-		moveValueH += speed * _time;
+		moveValueH += speed * time;
 
 		if (moveValueH >= 1.0f){
 			if (y + 1 >= SCREEN_HEIGHT)
