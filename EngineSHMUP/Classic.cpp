@@ -44,9 +44,14 @@ void Classic::Update(long int time){
 					leftRight = true;
 
 				maxValue = 0.6f;
+				
+				scoreValue -= 10; // Reducing score each position restart. limit 10
+				if (scoreValue < 10)
+					scoreValue = 10;
 			}
-			else if (leftRight == false){
-				if (rand() % 2 == 0){
+			
+			if (leftRight == false) { // State of moving vertically down
+				if (rand() % 2 == 0){ // random horizontal moving
 					if (rand() % 2 == 0){
 						if (x + 3 < SCREEN_WIDTH - WALLSIZE)
 							x += 1;
@@ -56,8 +61,8 @@ void Classic::Update(long int time){
 							x -= 1;
 					}
 				}
-			}
-			else{
+			} else { // State of moving vertically down, but with horizontal continuous moving 
+				// (invert after collides with wall)
 				if (x + 3 >= SCREEN_WIDTH - WALLSIZE)
 					moveX = -1;
 				else if (x <= WALLSIZE)

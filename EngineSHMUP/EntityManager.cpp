@@ -35,7 +35,7 @@ void EntityManager::Update(long int deltaTime){
 		enemy->Update(deltaTime);
 		
 		if (!enemy->isAlive)
-			it = enemies.erase(it); // should not increment iterator
+			it = enemies.erase(it); // shall not increment iterator
 		else
 			it++; 
 	}
